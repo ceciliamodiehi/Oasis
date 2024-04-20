@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Report</title>
+    <style>
+      body {
+        text-align: center;
+        font-family: Arial, sans-serif;
+      }
+      #weather-icon {
+        font-size: 2em;
+      }
+      #current-temp {
+        color: blue;
+        font-weight: bold;
+        margin-top: 10px;
+      }
+      .temperature-range {
+        margin-top: 10px;
+      }
+      #change-city-btn {
+        background-color: #6495ed;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        padding: 12px 24px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out,
+          transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+      }
+      #change-city-btn:hover {
+        background-color: #ff6347;
+        transform: scale(1.05);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+      }
+      .day {
+        transition: transform 0.3s ease-in-out, color 0.3s ease-in-out,
+          background-color 0.3s ease-in-out;
+        display: inline-block;
+        margin: 10px;
+        padding: 5px 10px;
+        border-radius: 5px;
+      }
+      .day:hover {
+        transform: scale(1.1);
+        color: #ff7f50;
+        background-color: #ffcc80;
+      }
+      .temperature-bold {
+        font-weight: bold;
+        color: #b5cea8; /* Green color */
+      }
+      .temperature-hover {
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 5px;
+        margin: 5px;
+      }
+      .temperature-hover:hover {
+        /* Removed the light gray background on hover */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="weather-icon">☁️☀️</div>
+    <div id="current-temp">
+      Currently 21° in Johannesburg
+      <!-- &#8451; is the degree symbol -->
+      <div class="temperature-range">
+        <span class="temperature-bold">13°</span> / 27°
+      </div>
+    </div>
+
+    <div class="day" id="tomorrow">
+      <div>🌧️ Tomorrow</div>
+      <div class="temperature-hover">
+        <div class="temperature-range">
+          10° / <span class="temperature-bold">22°</span>
+        </div>
+      </div>
+    </div>
+
+    <br />
+
+    <div class="day" id="thursday">
+      <div>☁️ Thursday</div>
+      <div class="temperature-hover">
+        <div class="temperature-range">
+          18° / <span class="temperature-bold">24°</span>
+          <!-- Bold 24 degrees -->
+        </div>
+      </div>
+    </div>
+
+    <br />
+
+    <div class="day" id="friday">
+      <div>☀️ Friday</div>
+      <div class="temperature-hover">
+        <div class="temperature-range">
+          20° / <span class="temperature-bold">28°</span>
+          <!-- Bold 28 degrees -->
+        </div>
+      </div>
+    </div>
+
+    <br />
+
+    <button id="change-city-btn">Change City</button>
+
+    <p>Coded by Cecilia</p>
+
+    <script>
+      document
+        .getElementById("change-city-btn")
+        .addEventListener("click", function () {
+          var city = prompt("Enter your city:");
+          if (city !== null && city !== "") {
+            var temperature = prompt("Enter the temperature in " + city + ":");
+            if (temperature !== null && temperature !== "") {
+              updateWeather(city, temperature);
+            } else {
+              alert("Temperature not provided. Please try again.");
+            }
+          } else {
+            alert("City not provided. Please try again.");
+          }
+        });
+
+      function updateWeather(city, temperature) {
+        // Update the weather information
+        document.getElementById("current-temp").innerHTML =
+          "Currently " + temperature + "° in " + city;
+        // You can update other elements as needed based on the city and temperature
+        // For example, you can update the other days' temperatures.
+        // Note: This is a simple example, and you may want to use a more sophisticated
+        // solution for a real-world application, such as fetching weather data from an API.
+      }
+    </script>
+  </body>
+</html>
